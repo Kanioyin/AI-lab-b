@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Zadań</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #taskList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .taskItem {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Lista Zadań</h1>
+
+<label for="search">Wyszukiwarka:</label>
+<input type="text" id="search" oninput="searchTasks()" minlength="2">
+
+<ul id="taskList"></ul>
+
+<div>
+    <label for="newTask">Nowe Zadanie:</label>
+    <input type="text" id="newTask" minlength="3" maxlength="255" required>
+
+    <label for="dueDate">Termin wykonania:</label>
+    <input type="datetime-local" id="dueDate" required>
+
+    <button onclick="addTask()">Dodaj Zadanie</button>
+</div>
+
+<script src="dziawa.js"></script>
+
+</body>
+</html>
