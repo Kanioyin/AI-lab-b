@@ -7,7 +7,6 @@ function addTask() {
     const newTask = newTaskInput.value.trim();
     const dueDate = new Date(dueDateInput.value);
 
-    // Walidacja nowego zadania
     if (newTask.length < 3 || newTask.length > 255) {
         alert('Nowe zadanie musi mieć co najmniej 3 znaki i nie więcej niż 255 znaków.');
         return;
@@ -32,10 +31,8 @@ function addTask() {
   `;
     taskList.appendChild(taskItem);
 
-    // Zapisz listę do Local Storage
     saveTasksToLocalStorage();
 
-    // Wyczyść pola formularza
     newTaskInput.value = '';
     dueDateInput.value = '';
 }
@@ -67,18 +64,14 @@ function editTask(spanElement) {
     const inputElement = document.createElement('input');
     inputElement.value = taskText;
 
-    // Zamień span na input
     spanElement.replaceWith(inputElement);
 
-    // Ustaw fokus na polu edycji
     inputElement.focus();
 
-    // Obsługa zapisywania zmian po utracie fokusu
     inputElement.addEventListener('blur', function() {
         saveChanges(inputElement);
     });
 
-    // Obsługa zapisywania zmian po naciśnięciu klawisza Enter
     inputElement.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             saveChanges(inputElement);
@@ -91,15 +84,13 @@ function saveChanges(inputElement) {
     const spanElement = document.createElement('span');
     spanElement.innerHTML = taskText;
 
-    // Zamień input na span
     inputElement.replaceWith(spanElement);
 }
 
 function deleteTask(deleteButton) {
     const taskItem = deleteButton.parentNode;
     taskItem.remove();
-
-    // Zapisz listę do Local Storage po usunięciu zadania
+    
     saveTasksToLocalStorage();
 }
 
